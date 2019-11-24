@@ -1,0 +1,84 @@
+contructor :
+
+	public function guardar(){
+        $resultado = $this->model_indicadores->nuevo(
+			$this->input->post("codigo_indicador"),
+            $this->input->post("descripcion"),
+            $this->input->post("grupo_indicador"),
+            $this->input->post("codigo_objetivo"),
+            $this->input->post("codigo_politica"),
+			$this->input->post("codigo_proceso"),;
+            $this->input->post("codigo_area"),
+            $this->input->post("codigo_fin"),
+            $this->input->post("tipo_calculo"),
+            $this->input->post("estado"),
+			$this->input->post("tipo_indicador"),
+            $this->input->post("frecuencia_datos"),
+            $this->input->post("frecuencia_analisis"),;
+            $this->input->post("responsable_indicador"),
+            $this->input->post("formula"),
+			$this->input->post("numerador"),
+            $this->input->post("denominador"),
+            $this->input->post("variable3"),
+            $this->input->post("unidad_medida"),
+            $this->input->post("tendencia"),
+			$this->input->post("responsable_analisis"),
+            $this->input->post("rango_bajo"),
+            $this->input->post("rango_medio"),
+            $this->input->post("rango_alto"),
+            $this->input->post("meta"),
+			$this->input->post("atributo_calidad"),
+            $this->input->post("grupo_estandar"),
+            $this->input->post("proyectado"),
+            $this->input->post("fecha_insercion"),
+            $this->input->post("usuario_insercion")
+            );
+        if($resultado){
+            $mensaje = "Indicador creado correctamente";
+            $clase = "success";
+        }else{
+            $mensaje = "Error al crear el indicador";
+            $clase = "danger";
+        }
+        $this->session->set_flashdata(array(
+            "mensaje" => $mensaje,
+            "clase" => $clase,
+        ));
+        redirect("indicadores/agregar");
+    }
+	
+modelo :
+
+public function nuevo($codigo_indicador, $descripcion, $grupo_indicador, $codigo_objetivo, $codigo_politica, $codigo_proceso, $codigo_area, $codigo_fin, $tipo_calculo, $estado,$tipo_indicador, $frecuencia_datos, $frecuencia_analisis, $responsable_indicador, $formula, $numerador, $denominador, $variable3, $unidad_medida, $tendencia, $responsable_analisis, $rango_bajo, $rango_medio, $rango_alto, $meta, $atributo_calidad, $grupo_estandar, $proyectado, $fecha_insercion, $usuario_insercion){
+            $this->codigo_indicador = $codigo_indicador;
+            $this->descripcion = $descripcion;
+            $this->grupo_indicador = $grupo_indicador;
+            $this->codigo_objetivo = $codigo_objetivo;
+            $this->codigo_politica = $codigo_politica;
+			$this->codigo_proceso = $codigo_proceso;
+            $this->codigo_area = $codigo_area;
+            $this->codigo_fin = $codigo_fin;
+            $this->tipo_calculo = $tipo_calculo;
+            $this->estado = $estado;
+			$this->tipo_indicador = $tipo_indicador;
+            $this->frecuencia_datos = $frecuencia_datos;
+            $this->frecuencia_analisis = $frecuencia_analisis;
+            $this->responsable_indicador = $responsable_indicador;
+            $this->formula = $formula;
+			$this->numerador = $numerador;
+            $this->denominador = $denominador;
+            $this->variable3 = $variable3;
+            $this->unidad_medida = $unidad_medida;
+            $this->tendencia = $tendencia;
+			$this->responsable_analisis = $responsable_analisis;
+            $this->rango_bajo = $rango_bajo;
+            $this->rango_medio = $rango_medio;
+            $this->rango_alto = $rango_alto;
+            $this->meta = $meta;
+			$this->atributo_calidad = $atributo_calidad;
+            $this->grupo_estandar = $grupo_estandar;
+            $this->proyectado = $proyectado;
+            $this->fecha_insercion = $fecha_insercion;
+            $this->usuario_insercion = $usuario_insercion;
+            return $this->db->insert('dat_indicador', $this);
+    }	
